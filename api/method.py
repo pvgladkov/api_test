@@ -22,10 +22,6 @@ class JsonRpcMethod(object):
     _response = None
 
     def __init__(self, test_case):
-        """
-        :type test_case: Config
-        :return:
-        """
         self._http_method = self.HTTP_METHOD.lower()
         self.test_case = test_case
         self.url = test_case.url
