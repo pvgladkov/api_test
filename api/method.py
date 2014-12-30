@@ -15,17 +15,14 @@ class JsonRpcMethod(object):
     params = None
     result = None
     error = None
-
     structure = {}
     get_params = None
-
     _response = None
 
     def __init__(self, test_case):
         self._http_method = self.HTTP_METHOD.lower()
         self.test_case = test_case
         self.url = test_case.url
-        self.result = None
 
     def get_body(self, params):
         self.params = params
