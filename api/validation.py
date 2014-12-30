@@ -26,7 +26,7 @@ def validate_json(schema, instance, cls):
     cls = cls if inspect.isclass(cls) else Draft3Validator
     validator = cls(schema)
     for index, error in enumerate(sorted(validator.iter_errors(instance), key=str)):
-        pinstance = pprint.pformat(
+        p_instance = pprint.pformat(
             instance[index] if isinstance(instance, list) else instance,
             width=72,
             indent=4,
@@ -39,9 +39,4 @@ def validate_json(schema, instance, cls):
             On instance with path -> "%s":\n
             %s
             """
-        ) % (
-            error.validator,
-            schema_path,
-            path,
-            pinstance
-        ))
+        ) % (error.validator, schema_path, path, p_instance))
