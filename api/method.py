@@ -38,8 +38,11 @@ class JsonRpcMethod(object):
         return dumps(body)
 
     def get_url(self):
+        http = ''
+        if 'http://' not in self.url:
+            http = 'http://'
         url = self.url + '?'
-        return ''.join([url, urllib.urlencode(self.get_params)])
+        return ''.join([http, url, urllib.urlencode(self.get_params)])
 
     def call(self, params=None):
         body = dumps(loads(
